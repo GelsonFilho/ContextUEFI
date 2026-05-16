@@ -1,5 +1,7 @@
 # ContextUEFI
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 ContextUEFI extracts EFI modules from a BIOS image, analyzes each module with
 Ghidra/PyGhidra, and generates a JSON context file used by the Ghidra graph
 script to show module interdependencies.
@@ -141,3 +143,13 @@ protocol GUID:
 
 The graph supports full view, focused view, multi-module focus, double-click
 navigation, back with `Ctrl+Z`, and mouse-wheel zoom.
+
+---
+
+## License
+This project is licensed under the **MIT License**. See [LICENSE](./LICENSE).
+
+---
+
+## Disclaimer
+This repository was developed entirely as a personal project, outside working hours, without any use of code, confidential information, internal tools or resources from any employer. All content in this project is based solely on public information and open references. All opinions, mistakes and design decisions are the sole responsibility of the author and do not represent or bind any company, institution or organization.
