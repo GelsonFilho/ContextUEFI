@@ -1,19 +1,21 @@
-# Byte-compiled / optimized / DLL files
+.bootstrap_test/
+.codex_vendor/
 __pycache__/
+**/__pycache__/
 *.py[cod]
-*$py.class
 *.class
 
-# Directories
 all/
 work/
 modules/
-.vscode/
 logs/
 img/
 ida_plugin/
 tools/
-chipsec/
+
 extractors/chipsec/
 extractors/uefiextract
 extractors/UEFIExtract.exe
+
+.git/
+.gitignore

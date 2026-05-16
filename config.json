@@ -1,0 +1,17 @@
+{
+    "WORK_DIR": "work",
+    "MODULES_DIR": "modules",
+    "LOGS_DIR": "logs",
+    "CHIPSEC_DIR": "extractors/chipsec",
+    "UEFIEXTRACT_PATH": "extractors/uefiextract",
+    "BINWALK_COMMAND": "binwalk",
+    "BINWALK_ARGS": ["-e"],
+    "KEEP_EXTRACTED_TREE": false,
+    "GHIDRA_INSTALL_DIR": "C:\\Program Files\\ghidra_12.0.1_PUBLIC",
+    "PYGHIDRA_PYTHON_PATH": "",
+    "PYGHIDRA_VENDOR_DIR": "",
+    "GHIDRA_PROJECT_DIR": "",
+    "GHIDRA_LANGUAGE": "",
+    "GHIDRA_COMPILER": "",
+    "GHIDRA_LOADER": ""
+}
