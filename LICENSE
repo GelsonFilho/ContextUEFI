@@ -1,6 +1,18 @@
 MIT License
 
-Copyright (c) 2018-2021 yeggor
+Copyright (c) 2018-2021 yeggor (UEFI_RETool)
+Copyright (c) 2026 Gelson José de Almeida Filho (ContextUEFI)
+
+Portions of this software are derived from UEFI_RETool
+(https://github.com/yeggor/uefi_retool), released under the MIT License.
+The following files are reused or adapted from that project:
+
+  - ghidra_backend/guid_db.py   (EDK2 and vendor GUID database)
+  - ghidra_backend/tables.py    (Boot Services and SMM table offsets)
+
+The protocol recovery strategy implemented in ghidra_backend/analyser.py is
+also based on that project and was ported to the Ghidra API. All remaining
+code is original to ContextUEFI.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
