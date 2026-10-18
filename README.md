@@ -42,6 +42,8 @@ python contextuefi.py get-context "C:\path\to\BIOS.bin" --keep-extracted-tree
 python contextuefi.py get-context "C:\path\to\BIOS.bin" --output-dir "C:\path\to"
 ```
 
+`-w` / `--workers` sets the number of parallel PyGhidra workers. The default is 8.
+
 The output is written to:
 
 ```text
@@ -144,12 +146,38 @@ protocol GUID:
 The graph supports full view, focused view, multi-module focus, double-click
 navigation, back with `Ctrl+Z`, and mouse-wheel zoom.
 
+Opening this view requires the Ghidra interface. The extraction, the PyGhidra
+analysis and the JSON file do not.
+
+## Reading the Graph
+
+The graph comes from static analysis:
+
+- An edge means one module installs a GUID that another module consumes. It is a possible protocol relationship, not a dependency confirmed at run time.
+- A call is detected when its immediate operand matches a Boot Services offset. The GUID comes from a backward scan of at most 16 instructions on 64-bit code and 24 on 32-bit code. Calls through a copied pointer, GUIDs loaded outside that window and GUIDs built at run time are missed. An offset match also does not prove that the called table is the Boot Services table, so false positives are possible.
+- A GUID recovery rate counts only call sites that this matching detected.
+- A GUID missing from the EDK II database is labelled `ProprietaryProtocol` in the JSON. It may be proprietary, or it may be a standard GUID absent from that database.
+- A GUID consumed without a provider inside the image is not automatically an interface an emulator must supply. It may come from the DXE Core, from a component outside the analysed volume, or from a call site the analysis missed.
+- A reduction in the number of modules around a starting point measures the size of the candidate set. It does not measure review completeness or analyst effort.
+
+## Reproducing the OVMF Run
+
+The firmware image used for the reported run is `example/OVMF.fd`. The Docker
+image above pins the tool versions used for that run. With the default of 8
+workers:
+
+```powershell
+docker run --rm -v "C:\path\to\ContextUEFI\example:/data" contextuefi /data/OVMF.fd -w 8
+```
+
 ---
 
 ## License
+
 This project is licensed under the **MIT License**. See [LICENSE](./LICENSE).
 
 ---
 
 ## Disclaimer
+
 This repository was developed entirely as a personal project, outside working hours, without any use of code, confidential information, internal tools or resources from any employer. All content in this project is based solely on public information and open references. All opinions, mistakes and design decisions are the sole responsibility of the author and do not represent or bind any company, institution or organization.
